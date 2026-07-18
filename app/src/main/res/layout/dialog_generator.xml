@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_md">
+
+    <TextView
+        android:id="@+id/tvGeneratedPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_generated_password"
+        android:padding="@dimen/spacing_md"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:fontFamily="monospace"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tvLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:textColor="?android:textColorSecondary"
+        android:textSize="@dimen/text_size_body" />
+
+    <SeekBar
+        android:id="@+id/seekLength"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="32"
+        android:progress="16"
+        android:min="8" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/cbUppercase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/gen_uppercase" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/cbLowercase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/gen_lowercase" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/cbDigits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/gen_digits" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/cbSymbols"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/gen_symbols" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRegenerate"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:text="重新生成"
+        app:icon="@drawable/ic_casino" />
+
+</LinearLayout>

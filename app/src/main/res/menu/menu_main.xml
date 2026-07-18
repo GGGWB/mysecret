@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_lock"
+        android:icon="@drawable/ic_lock"
+        android:title="@string/menu_lock"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_sort"
+        android:icon="@drawable/ic_sort"
+        android:title="@string/menu_sort"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_more"
+        android:icon="@drawable/ic_more"
+        android:title="更多"
+        app:showAsAction="always"
+        app:popupMenuStyle="@style/PopupMenuOverflow">
+        <menu>
+            <item
+                android:id="@+id/action_backup"
+                android:icon="@drawable/ic_backup"
+                android:title="@string/menu_backup" />
+            <item
+                android:id="@+id/action_help"
+                android:icon="@drawable/ic_help"
+                android:title="@string/menu_help" />
+        </menu>
+    </item>
+</menu>

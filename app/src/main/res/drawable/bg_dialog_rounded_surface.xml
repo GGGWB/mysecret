@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    加载框背景：24dp 圆角，跟随主题 surface 色（深色模式下自动变深）。
+    与 bg_dialog_rounded 的区别：bg_dialog_rounded 写死了白色，这里用主题色适配深色模式。
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/md_surface" />
+    <corners android:radius="24dp" />
+</shape>

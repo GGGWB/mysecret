@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 管理分类列表项 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="24dp"
+    android:paddingVertical="12dp"
+    android:background="?attr/selectableItemBackground">
+
+    <!-- 彩色圆点 -->
+    <View
+        android:id="@+id/categoryDot"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:background="@drawable/bg_category_dot" />
+
+    <!-- 分类名称 -->
+    <TextView
+        android:id="@+id/tvCategoryName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="16dp"
+        android:textSize="15sp"
+        android:textColor="#1C1B1F" />
+
+    <!-- 数量 -->
+    <TextView
+        android:id="@+id/tvCategoryCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="13sp"
+        android:textColor="#79747E" />
+
+    <!-- 编辑按钮 -->
+    <ImageButton
+        android:id="@+id/btnEditCategory"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_edit"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="编辑"
+        android:alpha="0.7" />
+
+    <!-- 删除按钮 -->
+    <ImageButton
+        android:id="@+id/btnDeleteCategory"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_delete"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="删除"
+        android:alpha="0.7" />
+</LinearLayout>

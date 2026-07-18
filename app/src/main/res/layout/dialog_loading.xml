@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    卡片式加载框：圆角白底卡片 + Material3 主色圆形进度 + 文案。
+    通过 window 背景透明让卡片裸显示，外加 Dialog 自带的半透明遮罩。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minWidth="160dp"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg_dialog_rounded_surface"
+    android:paddingTop="32dp"
+    android:paddingBottom="28dp"
+    android:paddingHorizontal="40dp">
+
+    <!-- Material3 圆形进度指示器，主色 -->
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:indeterminate="true"
+        app:indicatorColor="@color/md_primary"
+        app:indicatorSize="40dp"
+        app:trackThickness="4dp"
+        app:trackColor="@android:color/transparent" />
+
+    <!-- 加载文案 -->
+    <TextView
+        android:id="@+id/tvLoadingMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loading_unlock"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="14sp" />
+
+</LinearLayout>

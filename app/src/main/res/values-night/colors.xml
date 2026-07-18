@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="md_background">#0F172A</color>
+    <color name="md_surface">#1E293B</color>
+    <color name="md_on_background">#F1F5F9</color>
+    <color name="md_on_surface">#F1F5F9</color>
+    <color name="md_divider">#334155</color>
+    <color name="md_hint">#64748B</color>
+</resources>
