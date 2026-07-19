@@ -18,12 +18,13 @@ data class Vault(
     fun getCategoryById(id: String): Category? =
         categories.find { it.id == id }
 
-    fun createCategory(name: String, color: Int = 0xFF6750A4.toInt()): Category {
+    fun createCategory(name: String, color: Int = 0xFF6750A4.toInt(), emoji: String = "📁"): Category {
         val cat = Category(
             id = UUID.randomUUID().toString(),
             name = name,
             color = color,
-            sortOrder = categories.size
+            sortOrder = categories.size,
+            emoji = emoji
         )
         categories.add(cat)
         return cat
@@ -32,6 +33,12 @@ data class Vault(
     fun renameCategory(categoryId: String, newName: String) {
         val cat = categories.find { it.id == categoryId }
         cat?.let { it.name = newName }
+    }
+
+    /** 更新分类的 emoji 图标 */
+    fun updateCategoryEmoji(categoryId: String, newEmoji: String) {
+        val cat = categories.find { it.id == categoryId }
+        cat?.let { it.emoji = newEmoji }
     }
 
     fun deleteCategory(categoryId: String) {

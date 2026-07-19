@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    分类选择弹窗 - 居中卡片式。
-    📂 标题 + Chip 胶囊流式网格 + 分隔线 + 管理分类入口。
+    使用说明弹窗 - 卡片式（与其他弹窗统一设计语言）。
+    📖 标题 + 可滚动内容区（代码动态填充 TextView）+ 底部"知道了"按钮。
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,20 +10,20 @@
     android:orientation="vertical"
     android:background="@drawable/bg_dialog_rounded_surface"
     android:paddingTop="22dp"
-    android:paddingBottom="16dp"
-    android:paddingHorizontal="20dp">
+    android:paddingBottom="14dp">
 
     <!-- 标题：文字相对弹窗真居中，图标贴在文字左侧 -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp">
+        android:layout_marginBottom="14dp"
+        android:paddingHorizontal="20dp">
 
         <TextView
-            android:id="@+id/tvTitle"
+            android:id="@+id/tvHelpTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_select_title"
+            android:text="@string/help_title"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="?android:textColorPrimary"
@@ -34,43 +34,56 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="📂"
+            android:text="📖"
             android:textSize="22sp"
-            app:layout_constraintTop_toTopOf="@id/tvTitle"
-            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
-            app:layout_constraintEnd_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toTopOf="@id/tvHelpTitle"
+            app:layout_constraintBottom_toBottomOf="@id/tvHelpTitle"
+            app:layout_constraintEnd_toStartOf="@id/tvHelpTitle"
             android:layout_marginEnd="8dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- 分类 Chip 胶囊流式网格（代码动态填充） -->
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroupCategories"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:chipSpacingHorizontal="10dp"
-        app:chipSpacingVertical="10dp"
-        app:singleLine="false"
-        app:singleSelection="true" />
 
     <!-- 分隔线 -->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/md_divider"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="6dp" />
+        android:layout_marginBottom="4dp" />
 
-    <!-- 管理分类入口：齿轮图标 + 文字 -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnManageCategories"
-        style="@style/Widget.Material3.Button.TextButton"
+    <!-- 可滚动内容区：代码动态添加 TextView -->
+    <ScrollView
+        android:id="@+id/scrollHelp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/category_manage"
+        android:maxHeight="420dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:scrollbars="vertical"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:id="@+id/layoutHelpContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <!-- 分隔线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/md_divider"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- 底部按钮 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnHelpClose"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/help_btn_close"
         android:textColor="?attr/colorPrimary"
         android:textSize="15sp"
-        android:textStyle="bold"
-        app:icon="@drawable/ic_settings"
-        app:iconGravity="textStart"
-        app:iconTint="?attr/colorPrimary" />
+        android:textStyle="bold" />
 </LinearLayout>

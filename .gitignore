@@ -12,3 +12,6 @@ local.properties
 
 # ZCode 本地工作目录
 .zcode/
+
+# 设计参考稿（临时 mockup）
+design_preview.html

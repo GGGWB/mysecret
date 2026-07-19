@@ -49,9 +49,11 @@ dependencies {
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.process)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.gson)
     implementation(libs.androidx.security.crypto)
     implementation(libs.okhttp)
     implementation(libs.jcifs)
+    implementation(libs.androidx.gridlayout)
 }

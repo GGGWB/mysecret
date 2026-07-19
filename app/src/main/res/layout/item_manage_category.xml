@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 管理分类列表项 -->
+<!-- 管理分类列表项：emoji + 名称 + 数量 + 编辑 + 删除 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:paddingHorizontal="24dp"
-    android:paddingVertical="12dp"
-    android:background="?attr/selectableItemBackground">
+    android:paddingHorizontal="4dp"
+    android:paddingVertical="12dp">
 
-    <!-- 彩色圆点 -->
-    <View
-        android:id="@+id/categoryDot"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
-        android:background="@drawable/bg_category_dot" />
+    <!-- emoji 图标 -->
+    <TextView
+        android:id="@+id/tvCategoryEmoji"
+        android:layout_width="28dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:gravity="center" />
 
     <!-- 分类名称 -->
     <TextView
@@ -22,9 +22,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="4dp"
         android:textSize="15sp"
-        android:textColor="#1C1B1F" />
+        android:textColor="?android:textColorPrimary"
+        android:maxLines="1"
+        android:ellipsize="end" />
 
     <!-- 数量 -->
     <TextView
@@ -33,26 +35,30 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:textSize="13sp"
-        android:textColor="#79747E" />
+        android:textColor="?android:textColorSecondary" />
 
     <!-- 编辑按钮 -->
     <ImageButton
         android:id="@+id/btnEditCategory"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="6dp"
         android:src="@drawable/ic_edit"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="编辑"
-        android:alpha="0.7" />
+        android:alpha="0.6"
+        app:tint="?android:textColorSecondary"
+        xmlns:app="http://schemas.android.com/apk/res-auto" />
 
     <!-- 删除按钮 -->
     <ImageButton
         android:id="@+id/btnDeleteCategory"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:src="@drawable/ic_delete"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="删除"
-        android:alpha="0.7" />
+        android:alpha="0.6"
+        app:tint="?android:textColorSecondary"
+        xmlns:app="http://schemas.android.com/apk/res-auto" />
 </LinearLayout>

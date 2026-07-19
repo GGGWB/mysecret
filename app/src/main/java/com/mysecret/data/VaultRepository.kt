@@ -69,7 +69,8 @@ class VaultRepository private constructor(context: Context) {
 
     private fun cleanCategory(cat: Category): Category {
         return cat.copy(
-            name = cat.name ?: "未命名"
+            name = cat.name ?: "未命名",
+            emoji = cat.emoji?.takeIf { it.isNotEmpty() } ?: "📁"
         )
     }
 

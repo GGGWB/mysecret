@@ -9,4 +9,12 @@
             @anim/dialog_exit
         </item>
     </style>
+
+    <!-- 表单分组内的输入框：无边框，由外层卡片作为视觉边界 -->
+    <style name="Widget.MySecret.TextInputLayout.Form" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="hintTextColor">@color/md_primary</item>
+    </style>
 </resources>

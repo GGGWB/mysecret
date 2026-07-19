@@ -58,6 +58,15 @@ class BackupActivity : AppCompatActivity() {
         refreshStatus()
     }
 
+    override fun onResume() {
+        super.onResume()
+        // app 从后台返回时若已锁定，直接回解锁页
+        if (SessionManager.locked || SessionManager.getMasterPassword() == null) {
+            finish()
+            return
+        }
+    }
+
     private fun setupTypeSpinner() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, typeLabels).apply {
             setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -93,10 +102,20 @@ class BackupActivity : AppCompatActivity() {
 
     private fun setupListeners() {
         binding.btnExportLocal.setOnClickListener { exportLocal() }
+        binding.btnExportInfo.setOnClickListener { showSaveLocationInfo() }
         binding.btnSaveConfig.setOnClickListener { saveConfig() }
         binding.btnTest.setOnClickListener { testConnection() }
         binding.btnBackupNow.setOnClickListener { backupNow() }
         binding.btnRestore.setOnClickListener { showRestoreDialog() }
+    }
+
+    /** 点击 ⓘ 图标显示保存位置说明 */
+    private fun showSaveLocationInfo() {
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle(R.string.backup_save_location_title)
+            .setMessage(R.string.backup_save_location_desc)
+            .setPositiveButton(R.string.help_btn_close, null)
+            .show()
     }
 
     private fun getCurrentConfig(): BackupConfig {
@@ -212,10 +231,11 @@ class BackupActivity : AppCompatActivity() {
             binding.btnExportLocal.isEnabled = true
             binding.btnExportLocal.text = getString(R.string.backup_export_local)
             result.onSuccess { file ->
-                Snackbar.make(
-                    binding.root,
-                    getString(R.string.backup_local_path, file.absolutePath),
-                    Snackbar.LENGTH_LONG
+                // 成功提示用 Toast（与复制用户名一致），不显示完整路径
+                android.widget.Toast.makeText(
+                    this@BackupActivity,
+                    R.string.backup_local_saved_toast,
+                    android.widget.Toast.LENGTH_LONG
                 ).show()
             }.onFailure { e ->
                 Snackbar.make(
@@ -230,12 +250,28 @@ class BackupActivity : AppCompatActivity() {
     private fun showRestoreDialog() {
         val dialogBinding = DialogRestoreBinding.inflate(LayoutInflater.from(this))
 
-        val dialog = AlertDialog.Builder(this)
-            .setTitle(R.string.backup_restore_title)
-            .setView(dialogBinding.root)
-            .setPositiveButton(R.string.backup_restore_btn, null)
-            .setNegativeButton(R.string.btn_cancel, null)
-            .create()
+        // 卡片式弹窗（与其他弹窗统一）
+        val dialog = android.app.Dialog(this)
+        dialog.setContentView(dialogBinding.root)
+        dialog.setCancelable(true)
+        dialog.setCanceledOnTouchOutside(true)
+        dialog.window?.let { window ->
+            window.setBackgroundDrawableResource(android.R.color.transparent)
+            window.setGravity(android.view.Gravity.CENTER)
+            window.attributes?.windowAnimations = R.style.DialogAnimation
+            val metrics = android.util.DisplayMetrics()
+            windowManager.defaultDisplay.getMetrics(metrics)
+            window.setLayout(
+                (metrics.widthPixels * 0.9f).toInt(),
+                android.view.WindowManager.LayoutParams.WRAP_CONTENT
+            )
+            window.setDimAmount(0.35f)
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                window.setDimAmount(0.45f)
+                window.addFlags(android.view.WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
+                window.attributes?.setBlurBehindRadius(12)
+            }
+        }
 
         dialogBinding.btnSelectFile.setOnClickListener {
             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
@@ -245,33 +281,35 @@ class BackupActivity : AppCompatActivity() {
             startActivityForResult(intent, REQ_PICK_BACKUP_FILE)
         }
 
-        dialog.setOnShowListener {
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                val uri = selectedBackupUri
-                if (uri == null) {
-                    Snackbar.make(dialogBinding.root, R.string.backup_import_no_file, Snackbar.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-                val pwdStr = dialogBinding.etRestorePassword.text.toString()
-                if (pwdStr.isEmpty()) {
-                    dialogBinding.tilRestorePassword.error = getString(R.string.error_password_too_short)
-                    return@setOnClickListener
-                }
+        // 取消按钮
+        dialogBinding.btnCancel.setOnClickListener { dialog.dismiss() }
 
-                AlertDialog.Builder(this)
-                    .setMessage(R.string.backup_restore_confirm)
-                    .setPositiveButton(R.string.backup_restore_confirm_yes) { _, _ ->
-                        doRestore(uri, pwdStr.toCharArray(), dialog)
-                    }
-                    .setNegativeButton(R.string.btn_cancel, null)
-                    .show()
+        // 恢复按钮：校验后二次确认
+        dialogBinding.btnRestoreConfirm.setOnClickListener {
+            val uri = selectedBackupUri
+            if (uri == null) {
+                Snackbar.make(dialogBinding.root, R.string.backup_import_no_file, Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+            val pwdStr = dialogBinding.etRestorePassword.text.toString()
+            if (pwdStr.isEmpty()) {
+                dialogBinding.tilRestorePassword.error = getString(R.string.error_password_too_short)
+                return@setOnClickListener
+            }
+
+            androidx.appcompat.app.AlertDialog.Builder(this)
+                .setMessage(R.string.backup_restore_confirm)
+                .setPositiveButton(R.string.backup_restore_confirm_yes) { _, _ ->
+                    doRestore(uri, pwdStr.toCharArray(), dialog)
+                }
+                .setNegativeButton(R.string.btn_cancel, null)
+                .show()
         }
 
         dialog.show()
     }
 
-    private fun doRestore(uri: Uri, password: CharArray, parentDialog: AlertDialog) {
+    private fun doRestore(uri: Uri, password: CharArray, parentDialog: android.app.Dialog) {
         lifecycleScope.launch {
             val result = withContext(Dispatchers.IO) {
                 backupManager.restoreFromBackup(uri, password, SessionManager.getMasterPassword())

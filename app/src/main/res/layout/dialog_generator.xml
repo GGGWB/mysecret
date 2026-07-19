@@ -1,11 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    密码生成器弹窗 - 卡片式（与其他弹窗统一设计语言）。
+    🎲 标题 + 生成的密码展示 + 长度滑块 + 字符集勾选 + 重新生成/取消/应用按钮。
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="@dimen/spacing_md">
+    android:background="@drawable/bg_dialog_rounded_surface"
+    android:paddingTop="22dp"
+    android:paddingBottom="16dp"
+    android:paddingHorizontal="20dp">
 
+    <!-- 标题：文字相对弹窗真居中，图标贴在文字左侧 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/generator_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="?android:textColorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎲"
+            android:textSize="22sp"
+            app:layout_constraintTop_toTopOf="@id/tvTitle"
+            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+            app:layout_constraintEnd_toStartOf="@id/tvTitle"
+            android:layout_marginEnd="8dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 生成的密码展示 -->
     <TextView
         android:id="@+id/tvGeneratedPassword"
         android:layout_width="match_parent"
@@ -16,8 +53,11 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:fontFamily="monospace"
-        android:gravity="center" />
+        android:gravity="center"
+        android:maxLines="2"
+        android:ellipsize="middle" />
 
+    <!-- 长度标签 -->
     <TextView
         android:id="@+id/tvLength"
         android:layout_width="wrap_content"
@@ -26,6 +66,7 @@
         android:textColor="?android:textColorSecondary"
         android:textSize="@dimen/text_size_body" />
 
+    <!-- 长度滑块 -->
     <SeekBar
         android:id="@+id/seekLength"
         android:layout_width="match_parent"
@@ -34,42 +75,93 @@
         android:progress="16"
         android:min="8" />
 
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/cbUppercase"
+    <!-- 字符集勾选：2 列网格，更紧凑 -->
+    <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/gen_uppercase" />
-
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/cbLowercase"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/gen_lowercase" />
-
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/cbDigits"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/gen_digits" />
-
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/cbSymbols"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/gen_symbols" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRegenerate"
-        style="@style/Widget.Material3.Button.TonalButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/spacing_sm"
-        android:text="重新生成"
-        app:icon="@drawable/ic_casino" />
+        app:columnCount="2"
+        app:orientation="horizontal">
 
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cbUppercase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/gen_uppercase"
+            app:layout_columnWeight="1" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cbDigits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/gen_digits"
+            app:layout_columnWeight="1" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cbLowercase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/gen_lowercase"
+            app:layout_columnWeight="1" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cbSymbols"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/gen_symbols"
+            app:layout_columnWeight="1" />
+    </androidx.gridlayout.widget.GridLayout>
+
+    <!-- 分隔线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/md_divider"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="6dp" />
+
+    <!-- 按钮区：重新生成（TextButton）+ 取消（TextButton）+ 应用此密码（TonalButton） -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegenerate"
+            style="@style/Widget.Material3.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:text="@string/gen_regenerate"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="14sp"
+            app:icon="@drawable/ic_casino"
+            app:iconTint="?attr/colorPrimary" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancel"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:text="@string/btn_cancel"
+            android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnApply"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:text="@string/gen_apply"
+            android:textSize="14sp"
+            app:cornerRadius="12dp" />
+    </LinearLayout>
 </LinearLayout>

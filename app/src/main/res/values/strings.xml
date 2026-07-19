@@ -15,7 +15,7 @@
     <string name="error_password_too_short">主密码至少需要 8 个字符</string>
     <string name="error_password_mismatch">两次输入的密码不一致</string>
     <string name="error_wrong_password">主密码错误，请重试</string>
-    <string name="loading_unlock">正在解锁…</string>
+    <string name="loading_unlock">正在解密…</string>
     <string name="loading_setup">正在创建密码库…</string>
 
     <!-- Main -->
@@ -29,6 +29,26 @@
     <string name="sort_by_name_desc">按名称 Z→A</string>
     <string name="sort_by_updated">按修改时间</string>
     <string name="search_no_result">未找到匹配的记录</string>
+
+    <!-- Category -->
+    <string name="category_select_title">选择分类</string>
+    <string name="category_manage_title">管理分类</string>
+    <string name="category_manage">管理分类</string>
+    <string name="category_new">新建分类</string>
+    <string name="category_edit">编辑分类</string>
+    <string name="category_input_hint">输入分类名称</string>
+    <string name="category_create">创建</string>
+    <string name="category_save">保存</string>
+    <string name="category_all">全部</string>
+    <string name="category_count_format">%d 条密码</string>
+    <string name="category_delete_title">删除分类</string>
+    <string name="category_delete_message">确定删除分类「%1$s」吗？该分类下的 %2$d 条密码将变为未分类。</string>
+    <string name="category_empty_name">分类名称不能为空</string>
+    <string name="category_select_icon">选择图标</string>
+    <string name="form_group_basic">基本信息</string>
+    <string name="form_group_account">账号</string>
+    <string name="form_group_extra">附加信息</string>
+    <string name="category_not_classified">未分类</string>
 
     <!-- Editor -->
     <string name="add_title">添加密码</string>
@@ -68,6 +88,7 @@
     <string name="gen_digits">数字 (0–9)</string>
     <string name="gen_symbols">特殊符号 (!@#$…)</string>
     <string name="gen_apply">使用此密码</string>
+    <string name="gen_regenerate">重新生成</string>
 
     <!-- Misc -->
     <string name="auto_locked">已自动锁定</string>
@@ -125,6 +146,9 @@
     <string name="backup_import_no_file">未选择文件</string>
     <string name="backup_field_server_empty">请填写服务器地址</string>
     <string name="backup_exporting">正在导出加密备份…</string>
+    <string name="backup_local_saved_toast">已成功保存到本地</string>
+    <string name="backup_save_location_title">保存位置</string>
+    <string name="backup_save_location_desc">备份文件保存在应用私有目录的 backup 文件夹下，文件名为 mysecret_时间戳.mysecret。该目录仅本应用可访问，其他应用无法读取。</string>
 
     <!-- Help -->
     <string name="help_title">使用说明</string>

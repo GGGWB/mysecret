@@ -40,6 +40,11 @@ class CredentialDetailActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        // app 从后台返回时若已锁定，直接回解锁页
+        if (SessionManager.locked || SessionManager.getMasterPassword() == null) {
+            finish()
+            return
+        }
         displayCredential()
     }
 

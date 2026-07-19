@@ -6,4 +6,5 @@
     <color name="md_on_surface">#F1F5F9</color>
     <color name="md_divider">#334155</color>
     <color name="md_hint">#64748B</color>
+    <color name="chip_off_color">#2A3A52</color>
 </resources>

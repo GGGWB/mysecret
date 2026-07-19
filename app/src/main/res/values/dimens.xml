@@ -10,4 +10,24 @@
     <dimen name="text_size_body">15sp</dimen>
     <dimen name="text_size_caption">12sp</dimen>
     <dimen name="avatar_size">44dp</dimen>
+    <!-- 分类 Chip（选择分类弹窗）：收窄内边距，让一行放下 3 个 -->
+    <dimen name="chip_min_height_default">44dp</dimen>
+    <dimen name="chip_text_padding_default">12dp</dimen>
+    <dimen name="chip_radius_default">22dp</dimen>
+    <!-- emoji Chip（新建分类弹窗）：固定方形尺寸，边框大小一致 -->
+    <dimen name="emoji_chip_size">56dp</dimen>
+    <!-- emoji 边框：横向加宽、竖向缩减，形成扁椭圆。一行 5 个需控制总宽 -->
+    <dimen name="emoji_chip_width">56dp</dimen>
+    <dimen name="emoji_chip_height">42dp</dimen>
+    <dimen name="emoji_chip_padding">0dp</dimen>
+    <dimen name="emoji_chip_radius">16dp</dimen>
+    <dimen name="emoji_chip_text_size">22sp</dimen>
+    <dimen name="emoji_row_spacing">5dp</dimen>
+    <!-- 表单分组卡片 -->
+    <dimen name="form_group_spacing">18dp</dimen>
+    <dimen name="form_group_padding_h">4dp</dimen>
+    <dimen name="form_group_padding_v">4dp</dimen>
+    <dimen name="form_group_radius">14dp</dimen>
+    <dimen name="form_group_title_size">13sp</dimen>
+    <dimen name="form_category_row_height">52dp</dimen>
 </resources>

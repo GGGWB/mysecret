@@ -17,5 +17,8 @@ data class Category(
     val color: Int = 0xFF6750A4.toInt(),  // 默认紫色
 
     @SerializedName("sortOrder")
-    val sortOrder: Int = 0
+    val sortOrder: Int = 0,
+
+    @SerializedName("emoji")
+    var emoji: String = "📁"
 )

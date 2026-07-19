@@ -1,61 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 管理分类弹窗 - Bottom Sheet 风格 -->
+<!--
+    管理分类弹窗 - 居中卡片式（与选择分类弹窗统一设计语言）。
+    ⚙ 标题 + 分类列表（可编辑/删除）+ 分隔线 + 新建分类入口。
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/bg_bottom_sheet"
-    android:paddingTop="16dp"
+    android:background="@drawable/bg_dialog_rounded_surface"
+    android:paddingTop="22dp"
     android:paddingBottom="16dp"
-    android:paddingHorizontal="0dp">
+    android:paddingHorizontal="20dp">
 
-    <!-- 顶部拖拽指示器 -->
-    <View
-        android:layout_width="40dp"
-        android:layout_height="4dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/bg_drag_indicator"
-        android:layout_marginBottom="12dp" />
-
-    <!-- 标题 -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="管理分类"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="#1C1B1F"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginBottom="8dp" />
-
-    <!-- 分隔线 -->
-    <View
+    <!-- 标题：文字相对弹窗真居中，图标贴在文字左侧 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E0E0E0"
-        android:layout_marginBottom="12dp" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp">
 
-    <!-- 分类列表：限制最大高度，超出可内部滚动，保证底部按钮始终可见 -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category_manage_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="?android:textColorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_settings"
+            app:tint="?attr/colorPrimary"
+            app:layout_constraintTop_toTopOf="@id/tvTitle"
+            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+            app:layout_constraintEnd_toStartOf="@id/tvTitle"
+            android:layout_marginEnd="8dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 分类列表：限高内部滚动 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCategoryList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxHeight="360dp"
+        android:maxHeight="340dp"
         android:nestedScrollingEnabled="true"
         android:overScrollMode="never"
         android:scrollbars="none" />
 
-    <!-- 新建分类按钮 -->
-    <Button
-        android:id="@+id/btnNewCategory"
-        style="@style/Widget.Material3.Button.TonalButton"
+    <!-- 分割线 -->
+    <View
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="12dp"
-        android:text="+ 新建分类"
-        android:textSize="14sp"
-        android:textColor="#FFFFFF"
-        app:cornerRadius="12dp" />
+        android:layout_height="1dp"
+        android:background="@color/md_divider"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="6dp" />
+
+    <!-- 新建分类按钮：齿轮风格与选择分类的「管理分类」对称 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNewCategory"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/category_new"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:icon="@drawable/ic_add"
+        app:iconGravity="textStart"
+        app:iconTint="?attr/colorPrimary" />
 </LinearLayout>

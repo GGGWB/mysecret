@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 列表分组容器背景：浅色填充 + 圆角，iOS inset-grouped 风格 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/md_divider" />
+    <corners android:radius="14dp" />
+</shape>

@@ -59,7 +59,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
                         <ImageView
                             android:layout_width="24dp"
@@ -76,13 +77,34 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
 
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/backup_export_local"
-                                android:textColor="?android:textColorPrimary"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/backup_export_local"
+                                    android:textColor="?android:textColorPrimary"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <!-- ⓘ 保存位置说明图标 -->
+                                <ImageView
+                                    android:id="@+id/btnExportInfo"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginStart="6dp"
+                                    android:src="@drawable/ic_info"
+                                    android:background="?attr/selectableItemBackgroundBorderless"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:alpha="0.5"
+                                    android:contentDescription="@string/backup_save_location_title"
+                                    app:tint="@color/md_hint" />
+                            </LinearLayout>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -96,7 +118,6 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnExportLocal"
-                        style="@style/Widget.Material3.Button.TonalButton"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_marginTop="12dp"
@@ -244,20 +265,18 @@
                             android:layout_marginStart="@dimen/spacing_xs"
                             android:text="@string/backup_btn_test" />
                     </LinearLayout>
+
+                    <!-- 立即备份（隶属远程配置） -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnBackupNow"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="@dimen/spacing_sm"
+                        android:text="@string/backup_btn_backup_now"
+                        android:textSize="16sp"
+                        app:icon="@drawable/ic_backup" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <!-- ============================
-                 Section 3: 远程一键备份
-                 ============================ -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnBackupNow"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="@dimen/spacing_lg"
-                android:text="@string/backup_btn_backup_now"
-                android:textSize="16sp"
-                app:icon="@drawable/ic_backup" />
 
             <!-- ============================
                  Section 4: 从备份恢复

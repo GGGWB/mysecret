@@ -1,46 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 分类筛选列表项 -->
+<!--
+    分类筛选列表项（iOS inset-grouped 风格）。
+    - 圆点 + 名称 + 数量 pill + 单选按钮
+    - 顶部缩进分隔线（由代码控制首项不显示）
+    - 选中态背景由代码设置（极淡主色）
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
-    android:paddingHorizontal="24dp"
-    android:paddingVertical="14dp"
-    android:background="?attr/selectableItemBackground">
+    android:orientation="vertical">
 
-    <!-- 彩色圆点 -->
+    <!-- 顶部缩进分隔线（默认隐藏，非首项由代码显示） -->
     <View
-        android:id="@+id/categoryDot"
-        android:layout_width="12dp"
-        android:layout_height="12dp"
-        android:background="@drawable/bg_category_dot" />
+        android:id="@+id/dividerTop"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="48dp"
+        android:background="@color/md_divider"
+        android:visibility="gone" />
 
-    <!-- 分类名称 -->
-    <TextView
-        android:id="@+id/tvCategoryName"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/rowContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginStart="16dp"
-        android:textSize="16sp"
-        android:textColor="#1C1B1F" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="14dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
 
-    <!-- 数量 -->
-    <TextView
-        android:id="@+id/tvCategoryCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="14sp"
-        android:textColor="#79747E" />
+        <!-- 彩色圆点 -->
+        <View
+            android:id="@+id/categoryDot"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/bg_category_dot" />
 
-    <!-- 单选按钮 -->
-    <RadioButton
-        android:id="@+id/radioSelect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:clickable="false"
-        android:focusable="false" />
+        <!-- 分类名称 -->
+        <TextView
+            android:id="@+id/tvCategoryName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
+            android:textSize="15sp"
+            android:textColor="?android:textColorPrimary"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <!-- 数量 pill 标签 -->
+        <TextView
+            android:id="@+id/tvCategoryCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="2dp"
+            android:textSize="12sp"
+            android:background="@drawable/bg_count_pill"
+            android:textColor="?android:textColorSecondary" />
+
+        <!-- 单选按钮 -->
+        <RadioButton
+            android:id="@+id/radioSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:clickable="false"
+            android:focusable="false" />
+    </LinearLayout>
 </LinearLayout>

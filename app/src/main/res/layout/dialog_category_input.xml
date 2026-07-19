@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    从备份恢复弹窗 - 卡片式（与其他弹窗统一设计语言）。
-    📥 标题 + 说明 + 选择文件按钮 + 文件名 + 备份密码输入 + 取消/恢复按钮。
+    分类输入弹窗（新建/编辑共用）- 卡片式，紧凑布局。
+    标题 + 分类名输入框 + emoji 图标选择网格 + 取消/确认按钮。
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,22 +9,22 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/bg_dialog_rounded_surface"
-    android:paddingTop="22dp"
+    android:paddingTop="18dp"
     android:paddingBottom="14dp"
-    android:paddingHorizontal="20dp">
+    android:paddingHorizontal="18dp">
 
-    <!-- 标题：📥 + 文字 居中 -->
+    <!-- 标题区域：文字相对弹窗真居中，图标贴在文字左侧（文字由代码设置） -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="14dp">
 
         <TextView
-            android:id="@+id/tvRestoreTitle"
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/backup_restore_title"
-            android:textSize="20sp"
+            android:text="@string/category_new"
+            android:textSize="17sp"
             android:textStyle="bold"
             android:textColor="?android:textColorPrimary"
             app:layout_constraintTop_toTopOf="parent"
@@ -32,63 +32,56 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
+            android:id="@+id/ivTitleIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="📥"
-            android:textSize="22sp"
-            app:layout_constraintTop_toTopOf="@id/tvRestoreTitle"
-            app:layout_constraintBottom_toBottomOf="@id/tvRestoreTitle"
-            app:layout_constraintEnd_toStartOf="@id/tvRestoreTitle"
+            android:text="📁"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="@id/tvTitle"
+            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+            app:layout_constraintEnd_toStartOf="@id/tvTitle"
             android:layout_marginEnd="8dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- 说明文字 -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/backup_restore_desc"
-        android:textColor="@color/md_hint"
-        android:textSize="@dimen/text_size_caption"
-        android:layout_marginBottom="12dp" />
-
-    <!-- 选择文件按钮 -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSelectFile"
-        style="@style/Widget.Material3.Button.OutlinedButton"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="@string/backup_restore_select"
-        app:icon="@drawable/ic_folder" />
-
-    <!-- 已选文件名 -->
-    <TextView
-        android:id="@+id/tvSelectedFile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_xs"
-        android:textColor="@color/md_hint"
-        android:textSize="@dimen/text_size_caption"
-        android:visibility="gone" />
-
-    <!-- 备份密码输入 -->
+    <!-- 分类名输入框 -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilRestorePassword"
+        android:id="@+id/tilCategoryName"
         style="@style/Widget.MySecret.TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_sm"
-        android:hint="@string/backup_restore_password_hint"
-        app:endIconMode="password_toggle">
+        android:layout_marginBottom="12dp"
+        app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etRestorePassword"
+            android:id="@+id/etCategoryName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:maxLines="1" />
+            android:hint="@string/category_input_hint"
+            android:inputType="text"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:maxLength="20" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- 按钮区：取消 + 恢复 -->
+    <!-- 选择图标标签 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/category_select_icon"
+        android:textSize="12sp"
+        android:textColor="?android:textColorSecondary"
+        android:layout_marginBottom="8dp" />
+
+    <!-- emoji 选择网格：固定 5 列，每列等宽，横向均匀分布 -->
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridEmoji"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:columnCount="5"
+        app:rowCount="5"
+        app:orientation="horizontal" />
+
+    <!-- 按钮区：取消（TextButton）+ 主操作（TonalButton） -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -100,16 +93,16 @@
             android:id="@+id/btnCancel"
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
-            android:layout_height="44dp"
+            android:layout_height="42dp"
             android:text="@string/btn_cancel"
             android:textSize="14sp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnRestoreConfirm"
+            android:id="@+id/btnConfirm"
             style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="wrap_content"
-            android:layout_height="44dp"
-            android:text="@string/backup_restore_btn"
+            android:layout_height="42dp"
+            android:text="@string/category_create"
             android:textSize="14sp"
             app:cornerRadius="12dp" />
     </LinearLayout>
