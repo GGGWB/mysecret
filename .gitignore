@@ -21,7 +21,11 @@ keystore.properties
 *.keystore
 *.jks
 
-# 个人收款码等敏感图片（不进公开仓库）
+# 个人收款码等敏感图片 + 原始截图（不进公开仓库，截图已复制到 docs/screenshots/）
 微信图片_*.jpg
 *_收款码*.jpg
 donation_*.jpg
+/解锁页.jpg
+/主列表.jpg
+/密码生成功能.jpg
+/备份页.jpg
