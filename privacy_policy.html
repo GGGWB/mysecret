@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MySecret Privacy Policy</title>
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    color: #1A1A2E;
+    line-height: 1.75;
+    background: #FAFBFC;
+}
+.lang-switch {
+    text-align: right;
+    margin-bottom: 8px;
+}
+.lang-switch a {
+    color: #1F6FEB;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 6px 12px;
+    border: 1px solid #CBD5E0;
+    border-radius: 16px;
+    margin-left: 8px;
+}
+.lang-switch a:hover { background: #EEF4FF; }
+h1 {
+    color: #1F6FEB;
+    border-bottom: 2px solid #E2E8F0;
+    padding-bottom: 12px;
+    font-size: 28px;
+}
+h2 {
+    color: #1554B0;
+    margin-top: 36px;
+    font-size: 20px;
+}
+strong { color: #1A1A2E; }
+code {
+    background: #EEF2F7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 0.9em;
+    color: #C53030;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 16px 0;
+}
+th, td {
+    border: 1px solid #E2E8F0;
+    padding: 10px 14px;
+    text-align: left;
+}
+th { background: #F0F4FA; color: #1554B0; }
+blockquote {
+    border-left: 4px solid #1F6FEB;
+    margin: 24px 0;
+    padding: 14px 20px;
+    background: #F0F6FF;
+    color: #2D3748;
+    border-radius: 0 8px 8px 0;
+}
+.updated {
+    color: #64748B;
+    font-style: italic;
+    margin-top: -8px;
+}
+.divider {
+    border: none;
+    border-top: 1px dashed #CBD5E0;
+    margin: 64px 0;
+}
+section { scroll-margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<div class="lang-switch">
+    <a href="#en">English</a>
+    <a href="#zh">中文</a>
+</div>
+
+<!-- =========================================
+     ENGLISH
+     ========================================= -->
+<section id="en" lang="en">
+<h1>MySecret Privacy Policy</h1>
+<p class="updated">Last updated: July 2026</p>
+
+<p>Thank you for using MySecret (the "App"). This App is a local password manager where privacy and security are our core design principles. This policy describes how the App handles your data.</p>
+
+<h2>1. We Do Not Collect Any Data</h2>
+<p><strong>This App does not collect, store, or transmit any of your personally identifiable information.</strong></p>
+<ul>
+<li>The App has <strong>no</strong> user account system; no registration or login is required.</li>
+<li>The App does <strong>not</strong> include any analytics SDK, advertising SDK, crash reporting, or analytics tools.</li>
+<li>The App will <strong>never</strong> send your usage behavior, device information, or any other data to our servers (because we have no servers at all).</li>
+</ul>
+
+<h2>2. How Your Password Data Is Stored</h2>
+<ul>
+<li>All your password records are encrypted with <strong>AES-256-GCM</strong> and stored in the <strong>local private directory of your device</strong>.</li>
+<li>The encryption key is derived from your <strong>master password</strong> using <strong>PBKDF2-HMAC-SHA256 (210,000 iterations)</strong>.</li>
+<li>The <strong>master password is never stored</strong> on the device and cannot be recovered over the network; forgetting it means the data cannot be decrypted.</li>
+<li>This local directory is accessible only by this App; other apps cannot read it (ADB backup is disabled).</li>
+</ul>
+
+<h2>3. Purpose of the Network Permission</h2>
+<p>The App declares the <code>INTERNET</code> permission, <strong>only</strong> for the following <strong>user-configured</strong> features:</p>
+<ul>
+<li><strong>Remote backup</strong>: After you manually configure a WebDAV or SMB server, you can upload an <strong>encrypted</strong> <code>.mysecret</code> backup file to your own NAS or cloud drive.</li>
+<li>The transmitted content is a <strong>locally encrypted file</strong> that does <strong>not</strong> contain the plaintext master password and does <strong>not</strong> contain plaintext password records.</li>
+<li>The backup target address and credentials are stored locally using Android's <strong>EncryptedSharedPreferences</strong> encryption.</li>
+</ul>
+<p><strong>Important</strong>: The App will <strong>never</strong> make any network request unless you have configured remote backup.</p>
+
+<h2>4. Data Security Measures</h2>
+<ul>
+<li>All password operations are performed locally and never leave the device.</li>
+<li>The master password is held in a <code>CharArray</code> and immediately cleared after use.</li>
+<li>The clipboard is <strong>automatically cleared 30 seconds</strong> after copying a username/password.</li>
+<li>The App <strong>locks immediately</strong> when sent to the background; returning requires re-entering the master password.</li>
+<li>Remote backup server credentials are stored using hardware-level encryption.</li>
+</ul>
+
+<h2>5. Third-Party Services</h2>
+<p>This App does <strong>not</strong> use any third-party analytics, advertising, or data collection services.</p>
+<p>The backup feature may connect to <strong>third-party services you configure yourself</strong> (such as Synology NAS, Nextcloud WebDAV servers, or SMB shares). The privacy policies of those services are the responsibility of the respective providers. This App does not control or access the content transmitted to those servers (the data is already encrypted within this App).</p>
+
+<h2>6. Permissions</h2>
+<table>
+<tr><th>Permission</th><th>Purpose</th></tr>
+<tr><td><code>INTERNET</code></td><td>Only for user-configured WebDAV/SMB remote backup</td></tr>
+<tr><td><code>ACCESS_NETWORK_STATE</code></td><td>Detect network connection state for the remote backup feature</td></tr>
+</table>
+<p>This App does <strong>not</strong> request sensitive permissions such as camera, location, contacts, storage, or microphone.</p>
+
+<h2>7. Children's Privacy</h2>
+<p>This App is not directed to children under 13 and does not knowingly collect information from children.</p>
+
+<h2>8. Changes to This Policy</h2>
+<p>If there are any changes to this policy, the updated policy will be published along with the app release.</p>
+
+<h2>9. Contact Us</h2>
+<p>If you have any questions about this privacy policy, please contact us via GitHub Issues or the developer email.</p>
+
+<blockquote>
+<strong>In short: Your data always belongs to you. It is encrypted and stored on your device. We cannot access it, and we cannot help you recover a forgotten master password.</strong>
+</blockquote>
+</section>
+
+<hr class="divider">
+
+<!-- =========================================
+     中文
+     ========================================= -->
+<section id="zh" lang="zh-CN">
+<h1>MySecret 隐私政策</h1>
+<p class="updated">最后更新：2026 年 7 月</p>
+
+<p>感谢您使用 MySecret（以下简称"本应用"）。本应用是一款本地密码管理器，隐私和安全是我们的核心设计原则。本政策说明本应用如何处理您的数据。</p>
+
+<h2>1. 我们不收集任何数据</h2>
+<p><strong>本应用不收集、不存储、不传输您的任何个人身份信息。</strong></p>
+<ul>
+<li>本应用<strong>没有</strong>用户账号系统，无需注册或登录</li>
+<li>本应用<strong>不包含</strong>任何统计 SDK、广告 SDK、崩溃上报或分析工具</li>
+<li>本应用<strong>不会</strong>将您的使用行为、设备信息或任何其他数据发送到我们的服务器（因为我们根本没有服务器）</li>
+</ul>
+
+<h2>2. 您的密码数据如何存储</h2>
+<ul>
+<li>您的所有密码记录使用 <strong>AES-256-GCM</strong> 加密后存储在<strong>您设备的本地私有目录</strong>中</li>
+<li>加密密钥由您设置的<strong>主密码</strong>经 <strong>PBKDF2-HMAC-SHA256（210,000 次迭代）</strong>派生</li>
+<li><strong>主密码从不存储</strong>在设备中，也无法通过网络找回；遗忘主密码将无法解密数据</li>
+<li>该本地目录仅本应用可访问，其他应用无法读取（应用已禁用 ADB 备份）</li>
+</ul>
+
+<h2>3. 网络权限的用途</h2>
+<p>本应用声明了 <code>INTERNET</code> 网络权限，<strong>仅</strong>用于以下<strong>用户主动配置</strong>的功能：</p>
+<ul>
+<li><strong>远程备份</strong>：当您手动配置 WebDAV 或 SMB 服务器后，可一键将<strong>已加密的</strong> <code>.mysecret</code> 备份文件上传到您自己的 NAS 或网盘</li>
+<li>传输的内容是<strong>本地加密后的文件</strong>，<strong>不</strong>包含明文主密码，<strong>不</strong>包含明文密码记录</li>
+<li>备份目标的地址、凭据使用 Android 的 <strong>EncryptedSharedPreferences</strong> 加密存储在本地</li>
+</ul>
+<p><strong>重要</strong>：本应用<strong>不会</strong>在您未配置远程备份的情况下发起任何网络请求。</p>
+
+<h2>4. 数据安全措施</h2>
+<ul>
+<li>所有密码操作在本地完成，不离开设备</li>
+<li>主密码以 <code>CharArray</code> 持有，使用后立即清零</li>
+<li>复制用户名/密码后 <strong>30 秒自动清除剪贴板</strong></li>
+<li>应用退到后台后<strong>立即锁定</strong>，返回需重新输入主密码</li>
+<li>远程备份服务器凭据使用硬件级加密存储</li>
+</ul>
+
+<h2>5. 第三方服务</h2>
+<p>本应用<strong>不使用</strong>任何第三方分析、广告或数据收集服务。</p>
+<p>备份功能可能连接<strong>您自己配置的</strong>第三方服务（如群晖 NAS、Nextcloud 等 WebDAV 服务器，或 SMB 共享）。这些服务的隐私政策由相应服务提供方负责，本应用不控制也不接触传输到这些服务器的数据内容（数据在本应用内已加密）。</p>
+
+<h2>6. 权限说明</h2>
+<table>
+<tr><th>权限</th><th>用途</th></tr>
+<tr><td><code>INTERNET</code></td><td>仅用于用户主动配置的 WebDAV/SMB 远程备份</td></tr>
+<tr><td><code>ACCESS_NETWORK_STATE</code></td><td>检测网络连接状态，用于远程备份功能</td></tr>
+</table>
+<p>本应用<strong>不申请</strong>相机、定位、通讯录、存储、麦克风等敏感权限。</p>
+
+<h2>7. 儿童隐私</h2>
+<p>本应用不面向 13 岁以下儿童，也不收集儿童信息。</p>
+
+<h2>8. 政策变更</h2>
+<p>如本政策有任何变更，更新后的政策将随应用版本一同发布。</p>
+
+<h2>9. 联系我们</h2>
+<p>如对本隐私政策有任何疑问，请通过 GitHub Issues 或开发者邮箱联系我们。</p>
+
+<blockquote>
+<strong>简而言之：您的数据始终属于您自己，加密存储在您的设备上，我们无法访问，也无法帮助您找回遗忘的主密码。</strong>
+</blockquote>
+</section>
+
+</body>
+</html>
