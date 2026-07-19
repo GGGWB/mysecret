@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    网络安全配置：
+    - 默认拒绝明文流量（强制 HTTPS，公网更安全）
+    - 仅对局域网私有 IP 段允许明文（SMB 协议和局域网 NAS 的 WebDAV 通常不走 HTTPS）
+    - localhost 本地调试也允许
+-->
+<network-security-config>
+    <!-- 局域网/本地允许明文 -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">localhost</domain>
+        <domain includeSubdomains="false">127.0.0.1</domain>
+        <domain includeSubdomains="false">10.0.0.0</domain>
+        <domain includeSubdomains="false">172.16.0.0</domain>
+        <domain includeSubdomains="false">192.168.0.0</domain>
+    </domain-config>
+    <!-- 基础配置：默认拒绝明文 -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

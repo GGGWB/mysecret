@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MySecret</string>
+    <string name="app_subtitle">Password Vault</string>
+
+    <!-- Unlock -->
+    <string name="unlock_title">Unlock Vault</string>
+    <string name="unlock_hint">Enter master password</string>
+    <string name="unlock_btn">Unlock</string>
+    <string name="setup_title">Set Master Password</string>
+    <string name="setup_hint">Set a strong master password (at least 8 characters)</string>
+    <string name="setup_confirm_hint">Re-enter master password</string>
+    <string name="setup_btn">Create Vault</string>
+    <string name="setup_warning">⚠️ The master password cannot be recovered! If forgotten, all saved passwords will be unrecoverable. Please remember it.</string>
+    <string name="error_password_too_short">Master password must be at least 8 characters</string>
+    <string name="error_password_mismatch">The two passwords do not match</string>
+    <string name="error_wrong_password">Wrong master password, please try again</string>
+    <string name="loading_unlock">Decrypting…</string>
+    <string name="loading_setup">Creating vault…</string>
+
+    <!-- Main -->
+    <string name="search_hint">Search app name or website…</string>
+    <string name="empty_title">No passwords saved yet</string>
+    <string name="empty_subtitle">Tap + at the bottom right to add your first account</string>
+    <string name="menu_sort">Sort</string>
+    <string name="menu_lock">Lock</string>
+    <string name="menu_help">Help</string>
+    <string name="sort_by_name">Name A→Z</string>
+    <string name="sort_by_name_desc">Name Z→A</string>
+    <string name="sort_by_updated">Last modified</string>
+    <string name="search_no_result">No matching records found</string>
+
+    <!-- Category -->
+    <string name="category_select_title">Select Category</string>
+    <string name="category_manage_title">Manage Categories</string>
+    <string name="category_manage">Manage Categories</string>
+    <string name="category_new">New Category</string>
+    <string name="category_edit">Edit Category</string>
+    <string name="category_input_hint">Enter category name</string>
+    <string name="category_create">Create</string>
+    <string name="category_save">Save</string>
+    <string name="category_all">All</string>
+    <string name="category_count_format">%d passwords</string>
+    <string name="category_delete_title">Delete Category</string>
+    <string name="category_delete_message">Delete category \"%1$s\"? The %2$d passwords in it will become uncategorized.</string>
+    <string name="category_empty_name">Category name cannot be empty</string>
+    <string name="category_select_icon">Choose icon</string>
+
+    <!-- Editor -->
+    <string name="add_title">Add Password</string>
+    <string name="edit_title">Edit Password</string>
+    <string name="field_name">App / Website name</string>
+    <string name="field_username">Username / Email</string>
+    <string name="field_password">Password</string>
+    <string name="field_url">URL (optional)</string>
+    <string name="field_notes">Notes (optional)</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_generate">Generate Password</string>
+    <string name="field_name_empty">Please enter app or website name</string>
+    <string name="field_username_empty">Please enter username</string>
+    <string name="saved_success">Saved</string>
+    <string name="form_group_basic">Basic Info</string>
+    <string name="form_group_account">Account</string>
+    <string name="form_group_extra">Additional Info</string>
+    <string name="category_not_classified">Uncategorized</string>
+
+    <!-- Detail -->
+    <string name="detail_title">Detail</string>
+    <string name="btn_copy">Copy</string>
+    <string name="btn_edit">Edit</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_show_password">Show Password</string>
+    <string name="btn_hide_password">Hide Password</string>
+    <string name="copied_username">Username copied</string>
+    <string name="copied_password">Password copied</string>
+    <string name="clipboard_cleared">Clipboard cleared automatically</string>
+    <string name="confirm_delete">Delete this record?</string>
+    <string name="confirm_delete_yes">Delete</string>
+    <string name="confirm_delete_no">Cancel</string>
+    <string name="deleted_success">Deleted</string>
+
+    <!-- Generator -->
+    <string name="generator_title">Password Generator</string>
+    <string name="gen_length">Length: %d</string>
+    <string name="gen_uppercase">Uppercase (A–Z)</string>
+    <string name="gen_lowercase">Lowercase (a–z)</string>
+    <string name="gen_digits">Digits (0–9)</string>
+    <string name="gen_symbols">Symbols (!@#$…)</string>
+    <string name="gen_apply">Use This Password</string>
+    <string name="gen_regenerate">Regenerate</string>
+
+    <!-- Misc -->
+    <string name="auto_locked">Auto-locked</string>
+    <string name="content_desc_back">Back</string>
+    <string name="content_desc_search">Search</string>
+    <string name="content_desc_add">Add</string>
+    <string name="content_desc_more">More</string>
+    <string name="content_desc_visibility">Show/Hide</string>
+
+    <!-- Backup -->
+    <string name="menu_backup">Backup</string>
+    <string name="backup_title">Backup &amp; Sync</string>
+    <string name="backup_section_local">Local Backup</string>
+    <string name="backup_section_remote">Remote Backup Config</string>
+    <string name="backup_export_local">Export encrypted backup to local</string>
+    <string name="backup_export_local_desc">Export the encrypted vault as a .mysecret file</string>
+    <string name="backup_remote_type">Remote type</string>
+    <string name="backup_type_webdav">WebDAV</string>
+    <string name="backup_type_smb">SMB / Samba</string>
+    <string name="backup_type_none">No remote backup</string>
+    <string name="backup_field_server">Server address</string>
+    <string name="backup_field_server_hint_webdav">https://example.com/dav/</string>
+    <string name="backup_field_server_hint_smb">smb://192.168.1.100/share/</string>
+    <string name="backup_field_username">Username</string>
+    <string name="backup_field_password">Password</string>
+    <string name="backup_field_path">Backup path / filename</string>
+    <string name="backup_field_path_hint">backup/mysecret_backup.mysecret</string>
+    <string name="backup_btn_save_config">Save Config</string>
+    <string name="backup_btn_test">Test Connection</string>
+    <string name="backup_btn_backup_now">Backup Now</string>
+    <string name="backup_btn_restore">Restore from Backup</string>
+    <string name="backup_status_none">Remote backup not configured</string>
+    <string name="backup_status_configured">Configured: %s</string>
+    <string name="backup_last_time">Last backup: %s</string>
+    <string name="backup_last_never">Never backed up</string>
+    <string name="backup_testing">Testing connection…</string>
+    <string name="backup_test_success">Connection successful!</string>
+    <string name="backup_test_failed">Connection failed: %s</string>
+    <string name="backup_backing_up">Backing up…</string>
+    <string name="backup_success">Backup successful!</string>
+    <string name="backup_failed">Backup failed: %s</string>
+    <string name="backup_local_success">Exported to local</string>
+    <string name="backup_local_path">Backup file path: %s</string>
+    <string name="backup_no_config">Please configure remote backup server first</string>
+    <string name="backup_config_saved">Config saved</string>
+    <string name="backup_restore_title">Restore from Backup</string>
+    <string name="backup_restore_desc">Select a .mysecret backup file and enter the master password used when creating the backup to restore. Note: restoring will overwrite the current vault.</string>
+    <string name="backup_restore_select">Select backup file</string>
+    <string name="backup_restore_password_hint">Enter the backup\'s master password</string>
+    <string name="backup_restore_btn">Restore</string>
+    <string name="backup_restore_success">Restore successful! %d records restored</string>
+    <string name="backup_restore_failed">Restore failed: %s</string>
+    <string name="backup_restore_confirm">⚠️ Restoring will overwrite all current passwords. Continue?</string>
+    <string name="backup_restore_confirm_yes">Confirm Restore</string>
+    <string name="backup_import_no_file">No file selected</string>
+    <string name="backup_field_server_empty">Please enter server address</string>
+    <string name="backup_exporting">Exporting encrypted backup…</string>
+    <string name="backup_local_saved_toast">Successfully saved to local</string>
+    <string name="backup_save_location_title">Save Location</string>
+    <string name="backup_save_location_desc">Backup files are saved in the backup folder of the app\'s private directory, named mysecret_timestamp.mysecret. This directory is only accessible by this app; other apps cannot read it.</string>
+
+    <!-- Help -->
+    <string name="help_title">Help</string>
+    <string name="help_welcome">Welcome to MySecret!</string>
+    <string name="help_step1"><b>1. Add Password</b>\nTap the + button at the bottom right, fill in the website name, username, and password, select a category, and save.</string>
+    <string name="help_step2"><b>2. View Password</b>\nThe main list shows username and password mask.\n• Tap username → copy username\n• Tap 🔐 icon → show/hide password\n• Tap plaintext password → copy password</string>
+    <string name="help_step3"><b>3. Edit/Delete</b>\nTap the arrow on the right of an entry → enter edit page, where you can modify info or delete the record.</string>
+    <string name="help_step4"><b>4. Search</b>\nThe top search box supports searching by website name, username, password, URL, and notes.</string>
+    <string name="help_step5"><b>5. Categories</b>\nLong press the title → filter passwords by category.\nManage Categories → create/rename/delete categories.</string>
+    <string name="help_step6"><b>6. Sort</b>\nTap the sort icon at the top right → sort by name A-Z / Z-A / modified time.</string>
+    <string name="help_step7"><b>7. Backup</b>\nTap the backup icon at the top right → export encrypted file to local or sync to WebDAV/SMB server.</string>
+    <string name="help_step8"><b>8. Security</b>\n• All passwords are encrypted with AES-256-GCM\n• Master password is verified with high-strength PBKDF2 hashing\n• Clipboard is cleared 30 seconds after copying username/password\n• The lock icon at the top right manually locks the app</string>
+    <string name="help_tip">💡 It is recommended to back up your vault to local or remote servers regularly to prevent data loss.</string>
+    <string name="help_btn_close">Got it</string>
+</resources>
