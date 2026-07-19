@@ -6,14 +6,13 @@
 /build
 /app/build
 /captures
-
-# release/ 目录需要保留（提供 APK 给无 Google Play 的用户直接下载）
-# 下面这行是默认忽略规则的例外，确保 release/*.apk 能被提交
-!release/
-!release/*.apk
 .externalNativeBuild
 .cxx
 local.properties
+
+# APK 发布产物走 GitHub Releases，不进代码仓库
+*.apk
+release/
 
 # ZCode 本地工作目录
 .zcode/
