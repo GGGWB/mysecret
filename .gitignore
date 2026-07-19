@@ -20,3 +20,8 @@ design_preview.html
 keystore.properties
 *.keystore
 *.jks
+
+# 个人收款码等敏感图片（不进公开仓库）
+微信图片_*.jpg
+*_收款码*.jpg
+donation_*.jpg
