@@ -163,9 +163,7 @@ my_secret/
 
 MySecret 是**完全免费且开源**的，没有任何广告或变现。如果它对你有帮助，欢迎请开发者喝杯咖啡 ☕
 
-<!-- TODO: 注册爱发电后，把下面的链接替换为你的主页：https://afdian.com/a/你的用户名 -->
-
-💛 **爱发电（国内用户推荐）**：[欢迎赞助开发者](https://afdian.com/a/你的用户名)
+💛 **爱发电（爱发电 · 推荐国内用户）**：[https://afdian.com/a/gggwb](https://afdian.com/a/gggwb)
 
 > ⭐ 给项目点个 Star 也是对开发者最大的鼓励！
 
