@@ -32,7 +32,7 @@ android {
         // 找不到时 release 回退到 debug 签名（仅本地开发用，上架前必须配置真实 keystore）
         create("release") {
             if (keystoreProperties.isNotEmpty()) {
-                storeFile = file(keystoreProperties.getProperty("storeFile"))
+                storeFile = rootProject.file(keystoreProperties.getProperty("storeFile"))
                 storePassword = keystoreProperties.getProperty("storePassword")
                 keyAlias = keystoreProperties.getProperty("keyAlias")
                 keyPassword = keystoreProperties.getProperty("keyPassword")
